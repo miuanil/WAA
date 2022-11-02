@@ -2,6 +2,8 @@ package com.anilozmen.miu.lab1.domain;
 
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -11,4 +13,6 @@ public class PostV2 {
     String title;
     String content;
     Author author;
+
+    private List<Review> reviews;
 }

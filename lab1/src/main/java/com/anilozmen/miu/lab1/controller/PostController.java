@@ -2,6 +2,7 @@ package com.anilozmen.miu.lab1.controller;
 
 import com.anilozmen.miu.lab1.domain.Author;
 import com.anilozmen.miu.lab1.domain.PostV2;
+import com.anilozmen.miu.lab1.domain.Review;
 import com.anilozmen.miu.lab1.domain.dto.response.PostDetailV1Dto;
 import com.anilozmen.miu.lab1.domain.dto.response.PostDtoV1;
 import com.anilozmen.miu.lab1.service.PostService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -26,7 +28,7 @@ public class PostController {
 
     @GetMapping(headers = "X-API-VERSION=2")
     public PostV2 getPostsV2() {
-        return new PostV2(1, "Title", "Content", new Author("Bob", "Charlie"));
+        return new PostV2(1, "Title", "Content", new Author("Bob", "Charlie"), Arrays.asList(new Review(1, "Nice job!", 5)));
     }
 
     @GetMapping("/{id}")

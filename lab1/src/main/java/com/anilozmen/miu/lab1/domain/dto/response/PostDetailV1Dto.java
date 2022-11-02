@@ -1,6 +1,9 @@
 package com.anilozmen.miu.lab1.domain.dto.response;
 
+import com.anilozmen.miu.lab1.domain.Review;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -10,4 +13,6 @@ public class PostDetailV1Dto {
     String title;
     String content;
     String author;
+
+    private List<Review> reviews;
 }

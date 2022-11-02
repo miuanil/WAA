@@ -9,4 +9,5 @@ public class PostDtoV1 {
     long id;
     String title;
     String content;
+    String author;
 }
