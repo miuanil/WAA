@@ -1,5 +1,6 @@
 package com.anilozmen.miu.lab1.service;
 
+import com.anilozmen.miu.lab1.domain.dto.response.PostDetailV1Dto;
 import com.anilozmen.miu.lab1.domain.dto.response.PostDtoV1;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface PostService {
 
     List<PostDtoV1>findAllByAuthor(String author);
 
-    public PostDtoV1 findById(long id);
+    public PostDetailV1Dto findById(long id);
 
     public void save(PostDtoV1 post);
 

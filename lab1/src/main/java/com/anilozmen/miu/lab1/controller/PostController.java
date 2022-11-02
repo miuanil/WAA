@@ -2,6 +2,7 @@ package com.anilozmen.miu.lab1.controller;
 
 import com.anilozmen.miu.lab1.domain.Author;
 import com.anilozmen.miu.lab1.domain.PostV2;
+import com.anilozmen.miu.lab1.domain.dto.response.PostDetailV1Dto;
 import com.anilozmen.miu.lab1.domain.dto.response.PostDtoV1;
 import com.anilozmen.miu.lab1.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class PostController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public PostDtoV1 getPostById(@PathVariable(name = "id") long id) {
+    public PostDetailV1Dto getPostById(@PathVariable(name = "id") long id) {
         return postService.findById(id);
     }
 

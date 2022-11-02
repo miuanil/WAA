@@ -5,8 +5,9 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostDtoV1 {
+public class PostDetailV1Dto {
     long id;
     String title;
     String content;
+    String author;
 }

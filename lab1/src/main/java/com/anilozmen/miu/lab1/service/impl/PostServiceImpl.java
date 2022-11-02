@@ -1,6 +1,7 @@
 package com.anilozmen.miu.lab1.service.impl;
 
 import com.anilozmen.miu.lab1.domain.PostV1;
+import com.anilozmen.miu.lab1.domain.dto.response.PostDetailV1Dto;
 import com.anilozmen.miu.lab1.domain.dto.response.PostDtoV1;
 import com.anilozmen.miu.lab1.repository.PostRepository;
 import com.anilozmen.miu.lab1.service.PostService;
@@ -34,8 +35,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDtoV1 findById(long id) {
-        return modelMapper.map(postRepository.findById(id), PostDtoV1.class);
+    public PostDetailV1Dto findById(long id) {
+        return modelMapper.map(postRepository.findById(id), PostDetailV1Dto.class);
     }
 
     @Override
