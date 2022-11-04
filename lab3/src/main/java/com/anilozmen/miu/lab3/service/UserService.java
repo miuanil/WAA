@@ -1,7 +1,8 @@
 package com.anilozmen.miu.lab3.service;
 
+import com.anilozmen.miu.lab3.domain.dto.response.CommentDto;
 import com.anilozmen.miu.lab3.domain.dto.response.PostDetailDto;
-import com.anilozmen.miu.lab3.domain.dto.response.UserDetailDto;
+import com.anilozmen.miu.lab3.domain.dto.response.PostDto;
 import com.anilozmen.miu.lab3.domain.dto.response.UserDto;
 
 import java.util.List;
@@ -12,9 +13,9 @@ public interface UserService {
 
     List<UserDto> findUsersByPostSize(Integer total);
 
-    UserDetailDto findById(long id);
+    UserDto findById(long id);
 
-    List<PostDetailDto> findPostsById(long id);
+    List<PostDto> findPostsById(long id);
 
     void save(UserDto userDto);
 
@@ -23,5 +24,13 @@ public interface UserService {
     void update(long id, UserDto userDto);
 
     void deleteById(long id);
+
+    PostDetailDto findPostById(long id, long postId);
+
+    List<CommentDto> findPostCommentsById(long id, long postId);
+
+    CommentDto findPostCommentById(long id, long postId, long commentId);
+
+    void saveCommentToThePost(long id, long postId, long commentId);
 
 }

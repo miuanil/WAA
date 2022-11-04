@@ -25,6 +25,7 @@ hs_err_pid*
 .DS_Store
 restdemo/
 spring-data/
+spring-aop/
 
 HELP.md
 target/

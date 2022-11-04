@@ -20,7 +20,6 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     ModelMapper modelMapper;
 
-
     @Override
     public CommentDto findById(long id) {
         return modelMapper.map(commentRepository.findById(id), CommentDto.class);

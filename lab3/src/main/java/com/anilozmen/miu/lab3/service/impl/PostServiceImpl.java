@@ -39,8 +39,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getPostsByAuthor(String author) {
-        return postRepository.getPostsByAuthor(author).stream()
+    public List<PostDto> getPostsByAuthorEquals(String author) {
+        return postRepository
+                .getPostsByAuthorEquals(author)
+                .stream()
                 .map(e -> modelMapper.map(e, PostDto.class))
                 .collect(Collectors.toList());
     }
@@ -61,7 +63,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public void addCommentToThePost(long postId, long commentId) {
         Post post = modelMapper.map(findById(postId), Post.class);
-        Comment comment = commentRepository.findById(commentId);
+        Comment comment = commentRepository.findById(commentId).get();
 
         if (post.getComments() == null)
             post.setComments(Arrays.asList(comment));

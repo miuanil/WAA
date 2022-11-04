@@ -27,7 +27,7 @@ public class Post {
     @Column(name = "author")
     String author;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "post_id")
     List<Comment> comments;
 }

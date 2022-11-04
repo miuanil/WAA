@@ -11,7 +11,7 @@ public interface PostService {
 
     List<PostDto> findAll();
 
-    List<PostDto> getPostsByAuthor(String author);
+    List<PostDto> getPostsByAuthorEquals(String author);
 
     List<PostDto> getPostsByTitle(String title);
 

@@ -1,7 +1,8 @@
 package com.anilozmen.miu.lab3.controller;
 
+import com.anilozmen.miu.lab3.domain.dto.response.CommentDto;
 import com.anilozmen.miu.lab3.domain.dto.response.PostDetailDto;
-import com.anilozmen.miu.lab3.domain.dto.response.UserDetailDto;
+import com.anilozmen.miu.lab3.domain.dto.response.PostDto;
 import com.anilozmen.miu.lab3.domain.dto.response.UserDto;
 import com.anilozmen.miu.lab3.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDetailDto getUser(@PathVariable(name = "id") long id) {
+    public UserDto getUser(@PathVariable(name = "id") long id) {
         return userService.findById(id);
     }
 
@@ -43,7 +44,7 @@ public class UserController {
 
     @GetMapping("/{id}/posts")
     @ResponseStatus(HttpStatus.OK)
-    public List<PostDetailDto> getPostsById(@PathVariable(name = "id") long id) {
+    public List<PostDto> getPostsById(@PathVariable(name = "id") long id) {
         return userService.findPostsById(id);
     }
 
@@ -51,6 +52,30 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void savePost(@PathVariable(name = "id") long id, @PathVariable(name = "postId") long postId) {
         userService.addPostToTheUser(id, postId);
+    }
+
+    @GetMapping("/{id}/posts/{postId}")
+    @ResponseStatus(HttpStatus.OK)
+    public PostDetailDto getPostById(@PathVariable(name = "id") long id, @PathVariable(name = "postId") long postId) {
+        return userService.findPostById(id, postId);
+    }
+
+    @GetMapping("/{id}/posts/{postId}/comments")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CommentDto> getPostComments(@PathVariable(name = "id") long id, @PathVariable(name = "postId") long postId) {
+        return userService.findPostCommentsById(id, postId);
+    }
+
+    @GetMapping("/{id}/posts/{postId}/comments/{commentId}")
+    @ResponseStatus(HttpStatus.OK)
+    public CommentDto getPostComment(@PathVariable(name = "id") long id, @PathVariable(name = "postId") long postId, @PathVariable(name = "commentId") long commentId) {
+        return userService.findPostCommentById(id, postId, commentId);
+    }
+
+    @PostMapping("/{id}/posts/{postId}/comments/{commentId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveCommentToThePost(@PathVariable(name = "id") long id, @PathVariable(name = "postId") long postId, @PathVariable(name = "commentId") long commentId) {
+        userService.saveCommentToThePost(id, postId, commentId);
     }
 
     @DeleteMapping("/{id}")
