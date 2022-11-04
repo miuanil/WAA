@@ -1,20 +1,20 @@
 package com.anilozmen.miu.lab2.service;
 
-import com.anilozmen.miu.lab2.domain.dto.response.PostDtoV1;
+import com.anilozmen.miu.lab2.domain.dto.response.PostDto;
 
 import java.util.List;
 
 public interface PostService {
 
-    PostDtoV1 findById(long id);
+    PostDto findById(long id);
 
-    List<PostDtoV1> findAll();
+    List<PostDto> findAll();
 
-    List<PostDtoV1> getPostsByAuthor(String author);
+    List<PostDto> getPostsByAuthor(String author);
 
-    void save(PostDtoV1 postDtoV1);
+    void save(PostDto postDto);
 
-    void update(long id, PostDtoV1 postDtoV1);
+    void update(long id, PostDto postDto);
 
     void deleteById(long id);
 }

@@ -1,7 +1,7 @@
 package com.anilozmen.miu.lab2.service.impl;
 
-import com.anilozmen.miu.lab2.domain.PostV1;
-import com.anilozmen.miu.lab2.domain.dto.response.PostDtoV1;
+import com.anilozmen.miu.lab2.domain.Post;
+import com.anilozmen.miu.lab2.domain.dto.response.PostDto;
 import com.anilozmen.miu.lab2.repository.PostRepository;
 import com.anilozmen.miu.lab2.service.PostService;
 import org.modelmapper.ModelMapper;
@@ -21,41 +21,43 @@ public class PostServiceImpl implements PostService {
     ModelMapper modelMapper;
 
     @Override
-    public PostDtoV1 findById(long id) {
-        return modelMapper.map(postRepository.findById(id), PostDtoV1.class);
+    public PostDto findById(long id) {
+        return modelMapper.map(postRepository.findById(id), PostDto.class);
     }
 
     @Override
-    public List<PostDtoV1> findAll() {
-        List<PostV1> posts = postRepository.findAll();
-        return posts.stream().map(p -> modelMapper.map(p, PostDtoV1.class)).collect(Collectors.toList());
+    public List<PostDto> findAll() {
+        List<Post> posts = ((List<Post>) postRepository.findAll());
+        return posts.stream().map(p -> modelMapper.map(p, PostDto.class)).collect(Collectors.toList());
     }
 
     @Override
-    public List<PostDtoV1> getPostsByAuthor(String author) {
-        return postRepository.getPostsByAuthor(author).stream()
-                .map(e -> modelMapper.map(e, PostDtoV1.class))
+    public List<PostDto> getPostsByAuthor(String author) {
+        return postRepository
+                .getPostsByAuthorEquals(author)
+                .stream()
+                .map(e -> modelMapper.map(e, PostDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void save(PostDtoV1 postDtoV1) {
-        postRepository.save(modelMapper.map(postDtoV1, PostV1.class));
+    public void save(PostDto postDto) {
+        postRepository.save(modelMapper.map(postDto, Post.class));
     }
 
     @Override
-    public void update(long id, PostDtoV1 postDtoV1) {
-        PostDtoV1 p = findById(id);
-        if (postDtoV1.getAuthor() != null)
-            p.setAuthor(postDtoV1.getAuthor());
+    public void update(long id, PostDto postDto) {
+        PostDto p = findById(id);
+        if (postDto.getAuthor() != null)
+            p.setAuthor(postDto.getAuthor());
 
-        if (postDtoV1.getTitle() != null)
-            p.setTitle(postDtoV1.getTitle());
+        if (postDto.getTitle() != null)
+            p.setTitle(postDto.getTitle());
 
-        if (postDtoV1.getContent() != null)
-            p.setContent(postDtoV1.getContent());
+        if (postDto.getContent() != null)
+            p.setContent(postDto.getContent());
 
-        postRepository.save(modelMapper.map(p, PostV1.class));
+        postRepository.save(modelMapper.map(p, Post.class));
     }
 
     @Override

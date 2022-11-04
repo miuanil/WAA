@@ -1,13 +1,13 @@
 package com.anilozmen.miu.lab2.domain.dto.response;
 
-import com.anilozmen.miu.lab2.domain.Author;
 import lombok.*;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class PostDtoV2 {
+@NoArgsConstructor
+public class PostDto {
     long id;
     String title;
     String content;
-    Author author;
+    String author;
 }

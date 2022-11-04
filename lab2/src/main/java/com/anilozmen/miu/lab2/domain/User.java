@@ -1,8 +1,6 @@
 package com.anilozmen.miu.lab2.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,11 +19,8 @@ public class User {
     @Column(name = "name")
     String name;
 
-    @Transient
-    private int counter;
-
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
-    List<PostV1> posts;
+    List<Post> posts;
 
 }
