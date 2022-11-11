@@ -26,6 +26,8 @@ hs_err_pid*
 restdemo/
 spring-data/
 spring-aop/
+waa-lesson2-restful/
+spring-security-1/
 
 HELP.md
 target/
