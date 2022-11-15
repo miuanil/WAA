@@ -1,0 +1,20 @@
+.App .form {
+    width: 93.3%;
+    border: 1px solid #000;
+    padding: 1%;
+    margin: 1% 0 1% 1%;
+    display: block;
+  }
+  
+  .App .form input {
+    display: block;
+    padding: 5px;
+  }
+  
+  .App .form input[type=text] {
+    width: 250px;
+  }
+  
+  .App .form input[type="button"] {
+    margin-top: 10px;
+  }

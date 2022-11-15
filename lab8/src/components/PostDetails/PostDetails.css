@@ -1,0 +1,16 @@
+.PostDetails {
+    width: 93.3%;
+    border: 1px solid #000;
+    padding: 1%;
+    margin: 1% 0 1% 1%;
+    display: block;
+}
+
+.PostDetails .content {
+    margin: 20px 0;
+}
+
+
+.PostDetails input[type=button] {
+    margin: 1%;
+}
